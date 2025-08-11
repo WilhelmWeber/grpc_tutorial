@@ -1,0 +1,25 @@
+// protoバージョンの宣言
+syntax = "proto3";
+
+// goの自動生成コードをどこに置くか
+option go_package = "pkg/grpc";
+
+// パッケージ名
+package grpc_tutorial;
+
+// サービスの定義
+service GreetingService {
+    // 1-1対応
+    rpc Hello (HelloRequest) returns (HelloResponse);
+    rpc HelloServerStream (HelloRequest) returns (stream HelloResponse);
+}
+
+// サービス要求プロトコルの定義
+message HelloRequest {
+    string name = 1;
+}
+
+// サービス応答プロトコルの定義
+message HelloResponse {
+    string body = 1;
+}
